@@ -8,4 +8,15 @@ After creating a mapping table, music is generated using an AI music model (e.g.
 
 ![MusicEEG](https://github.com/user-attachments/assets/4545b06f-ee10-4a00-860d-ed417c597930)
 
+#
+
+# Mapping table (Bandpower → Music type)
+
+| EEG Feature | Meaning               | Used For Music        |
+| ----------- | --------------------- | --------------------- |
+| High Alpha  | Relaxation            | Ambient, slow BPM     |
+| High Beta   | Concentration         | Focus tracks          |
+| High Theta  | Meditation/Creativity | Dreamy, low-BPM       |
+| High Gamma  | Excitement/Intensity  | Fast, energetic songs |
+
 
