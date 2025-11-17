@@ -8,8 +8,6 @@ After creating a mapping table, music is generated using an AI music model (e.g.
 
 ![MusicEEG](https://github.com/user-attachments/assets/4545b06f-ee10-4a00-860d-ed417c597930)
 
-#
-
 # Mapping table (Bandpower → Music type)
 
 | EEG Feature | Meaning               | Used For Music        |
@@ -20,3 +18,17 @@ After creating a mapping table, music is generated using an AI music model (e.g.
 | High Gamma  | Excitement/Intensity  | Fast, energetic songs |
 
 
+
+# Research Objectives
+
+To systematically evaluate neurophysiological responses to AI-generated music by recording and analyzing electroencephalographic (EEG) data collected during exposure to distinct musical categories.
+
+To quantify changes in neural frequency bands—including Theta (4–7 Hz), Alpha (8–12 Hz), Beta (13–30 Hz), and Gamma (30–45 Hz)—and assess their relationship to cognitive and affective states elicited by different AI-generated compositions.
+
+To establish a rigorous and reproducible EEG preprocessing and analysis pipeline utilizing EEGLAB and MATLAB, incorporating standardized procedures for filtering, artifact correction, segmentation, and spectral analysis.
+
+To compare and interpret neural signatures across music conditions, identifying consistent patterns that correspond to relaxation, focus, excitation, or meditative responses.
+
+To develop an analytical framework capable of linking EEG-derived features to the structural characteristics of AI-generated music, thereby contributing to emerging research on the intersection of music technology, artificial intelligence, and human neurophysiology.
+
+To produce transparent, publicly accessible documentation and computational resources, hosted on GitHub, to facilitate replication, peer evaluation, and future expansion of the methodology.
