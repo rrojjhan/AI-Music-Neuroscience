@@ -32,3 +32,8 @@ To compare and interpret neural signatures across music conditions, identifying 
 To develop an analytical framework capable of linking EEG-derived features to the structural characteristics of AI-generated music, thereby contributing to emerging research on the intersection of music technology, artificial intelligence, and human neurophysiology.
 
 To produce transparent, publicly accessible documentation and computational resources, hosted on GitHub, to facilitate replication, peer evaluation, and future expansion of the methodology.
+
+
+# Music Links
+https://www.youtube.com/@ApolloVerse91
+https://www.youtube.com/@%E0%B9%80%E0%B8%81%E0%B9%87%E0%B8%9A%E0%B9%80%E0%B8%AA%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%87
