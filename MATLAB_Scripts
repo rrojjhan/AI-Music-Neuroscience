@@ -1,1 +1,65 @@
 #This is critical for showing real technical work should be in .m file.
+%% EEG → AI Music Analysis Script (EEGLAB)
+% Author: Rachnicha Rojjhanarittikorn
+% Date: 11/16/2025
+% Description: Preprocess EEG data, extract Theta/Alpha/Beta/Gamma
+% band powers, and export results for AI music analysis.
+
+%% Step 0: Setup EEGLAB
+eeglab; % Launch EEGLAB GUI
+clc; clear;
+
+%% Step 1: Load EEG Dataset
+% Replace 'yourfile.set' with your EEGLAB .set file
+EEG = pop_loadset('filename','yourfile.set','filepath','./EEG_Data/');
+
+%% Step 2: Preprocess EEG
+% Band-pass filtering (1–45 Hz)
+EEG = pop_eegfiltnew(EEG,1,45);
+
+% Notch filter at 60 Hz (optional)
+EEG = pop_eegfiltnew(EEG,59,61,[],1);
+
+% Remove bad channels (manual selection recommended)
+% EEG = pop_rejchan(EEG,'elec',[1:EEG.nbchan],'threshold',5,'norm','on');
+
+% Run ICA to remove artifacts (eye blinks, movements)
+EEG = pop_runica(EEG,'extended',1);
+
+%% Step 3: Epoching (optional)
+% Example: epochs of 2 seconds
+EEG = pop_epoch(EEG, {}, [0 2], 'epochinfo', 'yes');
+
+%% Step 4: Extract Band Powers
+fs = EEG.srate;           % Sampling rate
+data = mean(EEG.data,1); % Average across channels
+
+% Define frequency bands
+bands = struct('Theta',[4 7], 'Alpha',[8 12], 'Beta',[13 30], 'Gamma',[30 45]);
+
+% Compute band power for each band
+bandPower = struct();
+fields = fieldnames(bands);
+for i = 1:length(fields)
+    f = bands.(fields{i});
+    bandPower.(fields{i}) = bandpower(data, fs, f);
+end
+
+% Display results
+disp('Theta, Alpha, Beta, Gamma Band Powers:');
+disp(bandPower);
+
+%% Step 5: Export Results
+% Convert struct to table for export
+T = struct2table(bandPower);
+writetable(T,'EEG_BandPowers.csv');
+
+disp('EEG band powers saved to EEG_BandPowers.csv');
+
+%% Step 6: Optional Visualization
+figure;
+bar([bandPower.Theta, bandPower.Alpha, bandPower.Beta, bandPower.Gamma]);
+set(gca,'XTickLabel',{'Theta','Alpha','Beta','Gamma'});
+ylabel('Power (\muV^2)');
+title('EEG Band Powers');
+grid on;
