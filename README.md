@@ -37,3 +37,7 @@ To produce transparent, publicly accessible documentation and computational reso
 # Music Links
 https://www.youtube.com/@ApolloVerse91
 https://www.youtube.com/@%E0%B9%80%E0%B8%81%E0%B9%87%E0%B8%9A%E0%B9%80%E0%B8%AA%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%87
+
+# Reference
+https://eeglab.org/tutorials/02_Quickstart/quickstart.html
+
