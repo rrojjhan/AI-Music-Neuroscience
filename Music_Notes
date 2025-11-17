@@ -1,1 +1,74 @@
 # Sudo Prompt
+# First song
+# AI Music Prompt (High Alpha Relaxation – Ambient, Slow BPM)
+
+prompt = {
+    "genre": "Ambient",
+    "purpose": "High Alpha Relaxation",
+    "bpm": "50-65",
+    "mood": ["calming", "floating", "meditative", "clear-minded"],
+    "sound_design": {
+        "pads": "warm, soft, long-release",
+        "textures": "airy, shimmering, spacious",
+        "drones": "smooth, low-intensity",
+        "effects": "wide reverb, gentle delays"
+    },
+    "composition": {
+        "structure": "continuous soundscape",
+        "dynamics": "slow, subtle changes",
+        "avoid": ["vocals", "percussion", "sharp transients"]
+    },
+    "goal": "induce high-alpha brainwave state, enhance relaxation and focus"
+}
+
+generate_music(prompt)
+
+# Second Prompt
+# AI Music Prompt (High Beta – Concentration – Focus Tracks)
+
+prompt = {
+    "genre": "Focus Ambient / Minimal Electronic",
+    "purpose": "High Beta Concentration",
+    "bpm": "90-110",
+    "mood": ["alert", "focused", "energized", "clean"],
+    "sound_design": {
+        "synths": "crisp, bright, narrow-band",
+        "textures": "light pulses, subtle rhythmic patterns",
+        "bass": "tight, minimal, non-distracting",
+        "effects": "low reverb, short delays, clear spatial image"
+    },
+    "composition": {
+        "structure": "steady, repetitive focus patterns",
+        "rhythm": "steady soft pulses (no heavy percussion)",
+        "dynamics": "consistent energy, minimal variation",
+        "avoid": ["vocals", "complex melodies", "wide stereo distractions"]
+    },
+    "goal": "stimulate high-beta brainwave activity and maintain deep concentration"
+}
+
+generate_music(prompt)
+
+# Third Prompt
+# AI Music Prompt (High Theta Meditation / Creativity (Dreamy, Low BPM))
+prompt = {
+    "genre": "Ambient / Dreamy",
+    "purpose": "High Theta Meditation & Creativity",
+    "bpm": "45-60",
+    "mood": ["ethereal", "imaginative", "introspective", "calm"],
+    "sound_design": {
+        "pads": "soft, evolving, warm",
+        "textures": "airy, shimmering, spacious",
+        "tones": "distant, gentle, dreamlike",
+        "effects": "deep reverb, smooth fades, slow modulations"
+    },
+    "composition": {
+        "structure": "continuous, drifting soundscape",
+        "rhythm": "minimal or beatless",
+        "dynamics": "slow harmonic shifts, subtle movement",
+        "avoid": ["vocals", "sharp transients", "complex rhythms"]
+    },
+    "goal": "induce high-theta brainwave state, enhance meditation, creativity, and intuitive flow"
+}
+
+generate_music(prompt)
+
