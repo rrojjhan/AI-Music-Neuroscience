@@ -1,0 +1,78 @@
+# EEG-AI Music Analysis Script (Python)
+# Author: Rachnicha Rojjhanarittikorn
+# Date: 11/16/2025
+# Description: Batch EEG processing from EEGLAB .set files for band power extraction
+
+import mne
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import os
+
+# -----------------------------
+# 1. Settings
+# -----------------------------
+eeg_folder = './EEG_Data/'  # Folder containing .set files
+output_csv = 'EEG_BandPowers_Python.csv'
+
+bands = {
+    'Theta': (4, 7),
+    'Alpha': (8, 12),
+    'Beta': (13, 30),
+    'Gamma': (30, 45)
+}
+
+# -----------------------------
+# 2. Process each EEG file
+# -----------------------------
+results = []
+
+for file in os.listdir(eeg_folder):
+    if file.endswith('.set'):
+        filepath = os.path.join(eeg_folder, file)
+        print(f"Processing {file}...")
+        
+        # Load EEGLAB .set file
+        raw = mne.io.read_raw_eeglab(filepath, preload=True)
+        
+        # Band-pass filter
+        raw.filter(1., 45., fir_design='firwin')
+        
+        # Notch filter (optional)
+        raw.notch_filter(freqs=60)
+        
+        # ICA (optional, comment out if not needed)
+        # ica = mne.preprocessing.ICA(n_components=20, random_state=97)
+        # ica.fit(raw)
+        # ica.exclude = []  # Add artifact components if identified
+        # ica.apply(raw)
+        
+        # Compute PSD
+        psds, freqs = mne.time_frequency.psd_welch(raw, fmin=1, fmax=45)
+        psds_mean = psds.mean(axis=0)  # Average across channels
+        
+        # Compute band powers
+        band_powers = {'File': file}
+        for band, (fmin, fmax) in bands.items():
+            idx_band = np.logical_and(freqs >= fmin, freqs <= fmax)
+            band_powers[band] = psds_mean[idx_band].mean()
+        
+        results.append(band_powers)
+
+# -----------------------------
+# 3. Export results
+# -----------------------------
+df = pd.DataFrame(results)
+df.to_csv(output_csv, index=False)
+print(f"Results saved to {output_csv}")
+
+# -----------------------------
+# 4. Plot example (first file)
+# -----------------------------
+if len(results) > 0:
+    plt.figure(figsize=(8,5))
+    first = results[0]
+    plt.bar(bands.keys(), [first[b] for b in bands.keys()])
+    plt.ylabel('Power (uV^2)')
+    plt.title(f"EEG Band Powers - {first['File']}")
+    plt.show()
